@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* Class CSS */
+.about{
+    width: 400px;
+    margin: auto;
+}
+
+.about-team{
+    color: black;
+}
+
+.col{
+    padding-bottom: 50px;
+    
+}
+
+.clipart{
+    width: 300px;
+    height: 150px;
+}
+
+
+.authors{
+    background-color: #87bdd8;
+}
+
+.navbar-brand{
+    width: 100px;   
+}
+
+.nav-item{
+    font-family: 'Teko', sans-serif;
+    font-size: 50px;
+}
+
+.footer{
+    background-color: #8d9db6;
+}
+
+.gif-image{
+    width: 300%;
+    height: auto;
+}
+
+.howTo{
+    font-size: 20px;
+}
+
+.icon-white{
+    color: #FFFFFF;
+}
+
+.nb-background-color{                /* navbar background color */
+    background-color: #cfe0e8;
+}
+
+.nbMenuItem{                        /*navbar link text properties*/
+    color: black;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.padding-rationale{
+    height: 250px;
+    width: 600px;
+    padding-top: 40px;
+}
+
+.overview{
+    background-color: #87bdd8;
+}
+
+.ovPadLeft{
+    padding-left: 20px;
+}
+
+.ovPadRight{
+    padding-left: 20px;
+}
+
+.procedure{
+    background-color: #87bdd8;
+    padding: 1px;
+}
+
+
+.python-image{
+    width: 100px;
+}
+
+.results{
+    padding: 10px;
+}
+
+.shallow-water{
+    width: 60px;
+}
+.showcase{
+    background-color: #b7d7e8;
+
+}
+
+.title-image{
+    width: 300px;
+    height: 300px;
+}
+
+/* ID CSS */
+
+/* -----------------Underline Animation CSS -----------------*/
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /*color: #0087ca;*/
+  }
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #eae6e6;
+    /*transform-origin: bottom right;*/
+    transition: transform 0.35s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    /*transform-origin: bottom left;*/
+}
+
+h1{
+    color: black;
+    font-family: 'Teko', sans-serif;
+}
+
+p{
+    font-family: 'Playfair Display', serif;
+}
+
+h3{
+    font-family: 'Playfair Display', serif;
+}
+
+h4{
+    font-family: 'Playfair Display', serif;
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duke Track Pace Control</title>
+
+  <style>
+    :root {
+      --duke-blue: #001a57;
+      --duke-light-blue: #00539b;
+      --duke-gray: #e0e0e0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--duke-blue);
+      color: white;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Track layout */
+    .track-container {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      background: var(--duke-light-blue);
+      border-radius: 150px / 90px;
+      box-shadow: inset 0 0 0 15px #ffffff, inset 0 0 0 30px var(--duke-blue);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    /* Start marker */
+    .start-point {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 10px red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: white;
+      text-shadow: 0 0 5px #000;
+    }
+
+    /* Control panel */
+    .control-panel {
+      background: white;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      padding: 20px 30px;
+      width: 460px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--duke-blue);
+      font-weight: 700;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      transition: opacity 0.3s ease;
+    }
+
+    .control-row.off {
+      opacity: 0.5;
+    }
+
+    .color-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .color-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #555;
+    }
+
+    .color-dot.red { background-color: red; }
+    .color-dot.green { background-color: green; }
+    .color-dot.blue { background-color: blue; }
+
+    /* Toggle switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 3.5px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--duke-light-blue);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    input[type="number"] {
+      width: 70px;
+      padding: 4px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      text-align: right;
+    }
+
+    select {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: var(--duke-gray);
+      margin: 15px 0;
+    }
+
+    .footer-text {
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="track-container">
+    <div class="start-point">START</div>
+  </div>
+
+  <div class="control-panel">
+    <h2>Track Light Controls</h2>
+
+    <div class="control-row" id="row-red">
+      <div class="color-label">
+        <div class="color-dot red"></div>
+         Pace 1
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="redToggle" />
+        <span class="slider"></span>
+      </label>
+      <input type="number" id="redPace" placeholder="Pace" />
+    </div>
+
+    <div class="control-row" id="row-green">
+      <div class="color-label">
+        <div class="color-dot green"></div>
+        Pace 2
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="greenToggle" />
+        <span class="slider"></span>
+      </label>
+      <input type="number" id="greenPace" placeholder="Pace" />
+    </div>
+
+    <div class="control-row" id="row-blue">
+      <div class="color-label">
+        <div class="color-dot blue"></div>
+        Pace 3 
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="blueToggle" />
+        <span class="slider"></span>
+      </label>
+      <input type="number" id="bluePace" placeholder="Pace" />
+    </div>
+
+    <hr />
+
+    <div class="control-row">
+      <label for="distanceSelect"><strong>Event Distance:</strong></label>
+      <select id="distanceSelect">
+        <option value="60">60m</option>
+        <option value="100">100m</option>
+        <option value="200">200m</option>
+        <option value="400">400m</option>
+        <option value="800">800m</option>
+        <option value="1500">1500m</option>
+        <option value="1600">1600m (mile)</option>
+        <option value="3000">3000m</option>
+        <option value="5000">5000m</option>
+        <option value="10000">10000m</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="footer-text">© Ace the Pace</div>
+
+  <script>
+    const lights = ["red", "green", "blue"];
+    lights.forEach((color) => {
+      const toggle = document.getElementById(color + "Toggle");
+      const row = document.getElementById("row-" + color);
+
+      toggle.addEventListener("change", (e) => {
+        if (e.target.checked) {
+          row.classList.remove("off");
+          console.log(`${color.toUpperCase()} light ON`);
+        } else {
+          row.classList.add("off");
+          console.log(`${color.toUpperCase()} light OFF`);
+        }
+      });
+    });
+
+    document.getElementById("distanceSelect").addEventListener("change", (e) => {
+      console.log(`Selected event: ${e.target.value}m`);
+    });
+  </script>
+</body>
+</html>

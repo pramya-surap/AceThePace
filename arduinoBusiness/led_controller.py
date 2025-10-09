@@ -2,7 +2,6 @@
 
 import serial
 import time
-
 #Once .ino is uploaded, pyserial talks with the board through COM3
 
 # "COMX" on Windows, "/dev/ttyACM0" on Mac

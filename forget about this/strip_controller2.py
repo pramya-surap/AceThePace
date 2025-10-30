@@ -4,7 +4,7 @@ import time
 import threading
 
 class StripController:
-    def __init__(self, port="COM5", baud=9600, timeout=2, mock=False):
+    def __init__(self, port="/dev/tty.usbserial-110", baud=9600, timeout=2, mock=False):
         self.port = port
         self.baud = baud
         self.timeout = timeout

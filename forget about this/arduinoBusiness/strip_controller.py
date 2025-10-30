@@ -5,7 +5,7 @@ import time
 #Once .ino is uploaded, pyserial talks with the board through COM3
 
 # "COMX" on Windows, "/dev/ttyACM0" on Mac
-PORT = "COM5"
+PORT = "/dev/tty.usbserial-110"
 BAUD = 9600
 
 try:

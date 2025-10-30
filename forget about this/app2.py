@@ -12,9 +12,9 @@ key = 0
 
 # ---- NEW: controller singleton configuration ----
 # update COM port to your actual device port
-SERIAL_PORT = "COM5"
+SERIAL_PORT = "/dev/tty.usbserial-110"
 SERIAL_BAUD = 9600
-MOCK_SERIAL = True  # set True to test without Arduino (prints what would be sent)
+MOCK_SERIAL = False  # set True to test without Arduino (prints what would be sent)
 
 controller = StripController(port=SERIAL_PORT, baud=SERIAL_BAUD, mock=MOCK_SERIAL)
 # -------------------------------------------------
@@ -117,4 +117,4 @@ def api_send():
 
 if __name__ == "__main__":
     # keep your preferred host; if you get "requested address" error, either use 0.0.0.0 or pick an IP that exists on the machine
-    app.run(debug=False, host="10.197.40.151", port=5000)
+    app.run(debug=False, host="172.28.161.129", port=5000)

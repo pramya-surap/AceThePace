@@ -46,5 +46,5 @@ def test():
         return "Success"
 
 if __name__ == "__main__":
-    app.run(debug=False, host="10.197.40.151", port=5000)
-    # app.run(debug=False, host="169.254.198.223", port=5000)
+    app.run(debug=False, host="172.28.161.129", port=5000)
+    # app.run(debug=False, host="172.28.161.129", port=5000)
